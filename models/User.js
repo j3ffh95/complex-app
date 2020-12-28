@@ -1,11 +1,33 @@
 // Requiring the validator package
 const validator = require("validator");
+const sanitize = require("sanitize-html");
 const User = function (data) {
   this.data = data;
 
   this.errors = [];
 };
 
+// This function checks to see if all inputs are strings
+User.prototype.cleanUp = function () {
+  if (typeof this.data.username !== "string") {
+    this.data.username = "";
+  }
+  if (typeof this.data.email !== "string") {
+    this.data.email = "";
+  }
+  if (typeof this.data.password !== "string") {
+    this.data.password = "";
+  }
+
+  // updating the data object to get rid of any bogus properties
+  this.data = {
+    username: this.data.username.trim().toLowerCase(),
+    email: this.data.email.trim().toLowerCase(),
+    password: this.data.password,
+  };
+};
+
+// Validation for registering a new user
 User.prototype.validate = function () {
   if (this.data.username === "") {
     this.errors.push("You must provide a username.");
@@ -38,6 +60,7 @@ User.prototype.validate = function () {
 
 User.prototype.register = function () {
   // Step #1: Validate user data
+  this.cleanUp();
   this.validate();
 
   // Step #2: Only if there are no validation errors
