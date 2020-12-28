@@ -1,4 +1,4 @@
-const { RssHandler } = require("htmlparser2");
+const User = require("../models/User");
 
 exports.home = function (req, res) {
   res.render("home-guest");
