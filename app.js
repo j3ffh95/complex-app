@@ -3,6 +3,7 @@ const { route } = require("./router");
 const app = express();
 const router = require("./router");
 
+// Makes the our app server be able to use the public folder with our styles
 app.use(express.static("public"));
 
 // Set up app with the views folder, the first arg needs to be called views
@@ -13,10 +14,7 @@ app.set("views", "views");
 // This code tells express which template engine we are using (In this project we are using ejs)
 app.set("view engine", "ejs");
 
-// app.get("/", function (req, res) {
-//   res.render("home-guest");
-// });
-
+// Makes our app server use the router variable which has all our url routes
 app.use(router);
 
 app.listen(3000);
