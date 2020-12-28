@@ -2,6 +2,8 @@ const express = require("express");
 
 const app = express();
 
+app.use(express.static("public"));
+
 // Set up app with the views folder, the first arg needs to be called views
 // the second one is the name of the folder you want your views to be in.
 // Now express knows where to look and find out our templates
