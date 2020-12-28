@@ -1,6 +1,6 @@
 const express = require("express");
+const { route } = require("./router");
 const app = express();
-
 const router = require("./router");
 
 app.use(express.static("public"));
@@ -13,8 +13,10 @@ app.set("views", "views");
 // This code tells express which template engine we are using (In this project we are using ejs)
 app.set("view engine", "ejs");
 
-app.get("/", function (req, res) {
-  res.render("home-guest");
-});
+// app.get("/", function (req, res) {
+//   res.render("home-guest");
+// });
+
+app.use(router);
 
 app.listen(3000);

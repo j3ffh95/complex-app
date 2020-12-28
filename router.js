@@ -1,3 +1,9 @@
-console.log("this code is executed from the router file");
+const express = require("express");
 
-module.exports = "This is return from the router file";
+const router = express.Router();
+
+router.get("/", function (req, res) {
+  res.render("home-guest");
+});
+
+module.exports = router;
