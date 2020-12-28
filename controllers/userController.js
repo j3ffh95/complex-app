@@ -6,6 +6,6 @@ exports.home = function (req, res) {
 
 exports.register = function (req, res) {
   let user = new User(req.body);
-
+  user.register();
   res.send("Thanks for trying to register");
 };
