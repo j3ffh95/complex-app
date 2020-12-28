@@ -26,4 +26,4 @@ app.set("view engine", "ejs");
 // The second arg is the router we want to use
 app.use("/", router);
 
-app.listen(3000);
+module.exports = app;
