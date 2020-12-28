@@ -1,3 +1,4 @@
+const usersCollection = require("../db").collection("users");
 // Requiring the validator package
 const validator = require("validator");
 // const sanitize = require("sanitize-html");
@@ -65,6 +66,9 @@ User.prototype.register = function () {
 
   // Step #2: Only if there are no validation errors
   // then save the user data into a database
+  if (!this.errors.length) {
+    usersCollection.insertOne(this.data);
+  }
 };
 
 module.exports = User;
