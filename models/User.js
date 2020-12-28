@@ -1,6 +1,6 @@
 // Requiring the validator package
 const validator = require("validator");
-const sanitize = require("sanitize-html");
+// const sanitize = require("sanitize-html");
 const User = function (data) {
   this.data = data;
 
