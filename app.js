@@ -15,6 +15,8 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 // Makes our app server use the router variable which has all our url routes
-app.use(router);
+// The first arg is to tell which url to use this router for
+// The second arg is the router we want to use
+app.use("/", router);
 
 app.listen(3000);
