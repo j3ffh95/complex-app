@@ -16,6 +16,7 @@ exports.register = function (req, res) {
 
 exports.login = function (req, res) {
   let user = new User(req.body);
-
-  user.login();
+  user.login(function (result) {
+    res.send(result);
+  });
 };
