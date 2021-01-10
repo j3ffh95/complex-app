@@ -13,3 +13,9 @@ exports.register = function (req, res) {
     res.send("There is no errors");
   }
 };
+
+exports.login = function (req, res) {
+  let user = new User(req.body);
+
+  user.login();
+};

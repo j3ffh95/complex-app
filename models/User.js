@@ -59,6 +59,10 @@ User.prototype.validate = function () {
   }
 };
 
+User.prototype.login = function () {
+  this.cleanUp();
+};
+
 User.prototype.register = function () {
   // Step #1: Validate user data
   this.cleanUp();
