@@ -1,3 +1,4 @@
+// Getting the users collection from the database
 const usersCollection = require("../db").collection("users");
 // Requiring the validator package
 const validator = require("validator");
