@@ -62,6 +62,7 @@ User.prototype.validate = function () {
   }
 };
 
+// Added login method
 User.prototype.login = function () {
   return new Promise((resolve, reject) => {
     this.cleanUp();
