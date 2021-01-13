@@ -66,6 +66,7 @@ User.prototype.validate = function () {
 User.prototype.login = function () {
   return new Promise((resolve, reject) => {
     this.cleanUp();
+    // Checking to see in the userscollection data to see if there is a user there
     usersCollection
       .findOne({ username: this.data.username })
       .then((attemptedUser) => {
@@ -75,7 +76,7 @@ User.prototype.login = function () {
         ) {
           resolve("congrats");
         } else {
-          reject("invalid username and password");
+          reject("invalid username / password");
         }
       })
       .catch(() => {
