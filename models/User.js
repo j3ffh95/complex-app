@@ -68,10 +68,7 @@ User.prototype.login = function () {
     usersCollection
       .findOne({ username: this.data.username })
       .then((attemptedUser) => {
-        if (
-          attemptedUser &&
-          bcrypt.compareSync(this.data.password, attemptedUser.password)
-        ) {
+        if (attemptedUser && attemptedUser.password == this.data.password) {
           resolve("congrats");
         } else {
           reject("invalid username and password");
