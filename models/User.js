@@ -95,6 +95,7 @@ User.prototype.register = function () {
     let salt = bcrypt.genSaltSync(10);
     this.data.password = bcrypt.hashSync(this.data.password, salt);
 
+    // Adding the data from a user to the usercollection in mongodb using the insertone method
     usersCollection.insertOne(this.data);
   }
 };

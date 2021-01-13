@@ -3,6 +3,7 @@ dotenv.config();
 
 const mongodb = require("mongodb");
 
+// Connecting the app to the mongodb database
 mongodb.connect(
   process.env.CONNECTIONSTRING,
   { useNewUrlParser: true, useUnifiedTopology: true },
