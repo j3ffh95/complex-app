@@ -5,7 +5,7 @@ const router = require("./router");
 
 // Creating configarations options
 let sessionOptions = session({
-  secret: "Hello World",
+  secret: "JavaScript is sooooooooo coool",
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true },

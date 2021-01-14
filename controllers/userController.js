@@ -5,6 +5,8 @@ exports.login = function (req, res) {
   user
     .login()
     .then(function (result) {
+      // Create session object
+      req.session.user = { favColor: "blue", username: user.data.username };
       res.send(result);
     })
     .catch(function (error) {
@@ -25,5 +27,9 @@ exports.register = function (req, res) {
 };
 
 exports.home = function (req, res) {
-  res.render("home-guest");
+  if (req.session.user) {
+    res.send("Welcome to the actual app");
+  } else {
+    res.render("home-guest");
+  }
 };
