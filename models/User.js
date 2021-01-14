@@ -1,9 +1,10 @@
 // Requiring bcryptjs to use it from the npm
 const bcrypt = require("bcryptjs");
 // Getting the users collection from the database
-const usersCollection = require("../db").collection("users");
+const usersCollection = require("../db").db().collection("users");
 // Requiring the validator package
 const validator = require("validator");
+const { db } = require("../db");
 // const sanitize = require("sanitize-html");
 const User = function (data) {
   this.data = data;
