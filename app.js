@@ -5,6 +5,7 @@ const app = express();
 const router = require("./router");
 
 // Creating configarations options
+// Adding the store property so we can store our session in mongodb
 let sessionOptions = session({
   secret: "JavaScript is sooooooooo coool",
   store: new MongoStore({ client: require("./db") }),
