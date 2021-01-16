@@ -14,7 +14,11 @@ exports.login = function (req, res) {
     });
 };
 
-exports.logout = function (req, res) {};
+exports.logout = function (req, res) {
+  // use the destroy method to delete session
+  req.session.destroy();
+  res.send("You are now logged out.");
+};
 
 exports.register = function (req, res) {
   let user = new User(req.body);
