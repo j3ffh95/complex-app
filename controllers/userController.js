@@ -15,6 +15,10 @@ exports.login = function (req, res) {
       });
     })
     .catch(function (error) {
+      // call flash from the req object and give it 2 arguments, the first one is the name of the collection
+      // that we want to add to,
+      // the second arg is the text we want to fill to that collection.
+      req.flash("errors", e);
       res.redirect("/");
     });
 };
@@ -38,6 +42,7 @@ exports.register = function (req, res) {
 
 exports.home = function (req, res) {
   if (req.session.user) {
+    // you can call render with a second arg so you can pass the specific data to the template
     res.render("home-dashboard", { username: req.session.user.username });
   } else {
     res.render("home-guest");
