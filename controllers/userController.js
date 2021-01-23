@@ -7,7 +7,12 @@ exports.login = function (req, res) {
     .then(function (result) {
       // Create session object
       req.session.user = { favColor: "blue", username: user.data.username };
-      res.send(result);
+      // we have to save the session using the save method in the session object
+      // added a callback function that is going to run when it is successfully saves
+      // it is going to redirect the user the home page with him logged in already
+      req.session.save(function () {
+        res.redirect("/");
+      });
     })
     .catch(function (error) {
       res.send(error);
@@ -16,8 +21,9 @@ exports.login = function (req, res) {
 
 exports.logout = function (req, res) {
   // use the destroy method to delete session
-  req.session.destroy();
-  res.send("You are now logged out.");
+  req.session.destroy(function () {
+    res.redirect("/");
+  });
 };
 
 exports.register = function (req, res) {
