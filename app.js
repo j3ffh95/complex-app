@@ -22,10 +22,8 @@ app.use(flash());
 // Boilerplate code the our app server needs
 // It tells express to add the user submitted data onto our request object
 // so then we can access it from request dot body
-
 // Now our app accepts the two most common way of submitting date on the Web
 // a traditional html form submit and also just sending over a bit of json data
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 

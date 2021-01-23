@@ -15,7 +15,7 @@ exports.login = function (req, res) {
       });
     })
     .catch(function (error) {
-      res.send(error);
+      res.redirect("/");
     });
 };
 
