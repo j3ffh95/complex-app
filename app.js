@@ -16,6 +16,8 @@ let sessionOptions = session({
 });
 
 app.use(sessionOptions);
+// make our app server use the connect-flash package
+app.use(flash());
 
 // Boilerplate code the our app server needs
 // It tells express to add the user submitted data onto our request object
