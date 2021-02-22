@@ -54,7 +54,7 @@ exports.home = function (req, res) {
   } else {
     res.render("home-guest", {
       errors: req.flash("errors"),
-      registrationErrors: req.flash("registratinoErrors"),
+      registrationErrors: req.flash("registrationErrors"),
     });
   }
 };

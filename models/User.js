@@ -61,6 +61,20 @@ User.prototype.validate = function () {
   if (this.data.username.length > 30) {
     this.errors.push("Username cannot exceed 30 characters.");
   }
+
+  // Only if username is valid then check to see if its already taken
+  if (
+    this.data.username.length > 2 &&
+    this.data.username.length < 31 &&
+    validator.isAlphanumeric(this.data.username)
+  ) {
+    let usernameExists = usersCollection.findOne({
+      username: this.data.username,
+    });
+    if (usernameExists) {
+      this.errors.push("That username is already taken.");
+    }
+  }
 };
 
 // Added login method
