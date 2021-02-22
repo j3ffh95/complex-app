@@ -52,6 +52,9 @@ exports.home = function (req, res) {
     // you can call render with a second arg so you can pass the specific data to the template
     res.render("home-dashboard", { username: req.session.user.username });
   } else {
-    res.render("home-guest", { errors: req.flash("errors") });
+    res.render("home-guest", {
+      errors: req.flash("errors"),
+      registrationErrors: req.flash("registratinoErrors"),
+    });
   }
 };
