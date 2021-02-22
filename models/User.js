@@ -33,7 +33,7 @@ User.prototype.cleanUp = function () {
 };
 
 // Validation for registering a new user
-User.prototype.validate = function () {
+User.prototype.validate = async function () {
   if (this.data.username === "") {
     this.errors.push("You must provide a username.");
   }
@@ -68,7 +68,7 @@ User.prototype.validate = function () {
     this.data.username.length < 31 &&
     validator.isAlphanumeric(this.data.username)
   ) {
-    let usernameExists = usersCollection.findOne({
+    let usernameExists = await usersCollection.findOne({
       username: this.data.username,
     });
     if (usernameExists) {
