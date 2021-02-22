@@ -18,8 +18,10 @@ exports.login = function (req, res) {
       // call flash from the req object and give it 2 arguments, the first one is the name of the collection
       // that we want to add to,
       // the second arg is the text we want to fill to that collection.
-      req.flash("errors", e);
-      res.redirect("/");
+      req.flash("errors", error);
+      req.session.save(function () {
+        res.redirect("/");
+      });
     });
 };
 
@@ -34,7 +36,12 @@ exports.register = function (req, res) {
   let user = new User(req.body);
   user.register();
   if (user.errors.length) {
-    res.send(user.errors);
+    user.errors.forEach(function (error) {
+      req.flash("registrationErrors", error);
+    });
+    req.session.save(function () {
+      res.redirect("/");
+    });
   } else {
     res.send("There is no errors");
   }
@@ -45,6 +52,6 @@ exports.home = function (req, res) {
     // you can call render with a second arg so you can pass the specific data to the template
     res.render("home-dashboard", { username: req.session.user.username });
   } else {
-    res.render("home-guest");
+    res.render("home-guest", { errors: req.flash("errors") });
   }
 };
