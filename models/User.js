@@ -105,6 +105,7 @@ User.prototype.login = function () {
           attemptedUser &&
           bcrypt.compareSync(this.data.password, attemptedUser.password)
         ) {
+          this.getAvatar();
           resolve("congrats");
         } else {
           reject("invalid username / password");
@@ -131,6 +132,7 @@ User.prototype.register = function () {
 
       // Adding the data from a user to the usercollection in mongodb using the insertone method
       await usersCollection.insertOne(this.data);
+      this.getAvatar();
       resolve();
     } else {
       reject(this.errors);
@@ -139,7 +141,7 @@ User.prototype.register = function () {
 };
 
 User.prototype.getAvatar = function () {
-  this.avatar = `https://gravatar.com/avatar/email?s=128`;
+  this.avatar = `https://gravatar.com/avatar/${md5(this.data.email)}?s=128`;
 };
 
 module.exports = User;
