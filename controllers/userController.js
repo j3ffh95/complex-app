@@ -6,7 +6,7 @@ exports.login = function (req, res) {
     .login()
     .then(function (result) {
       // Create session object
-      req.session.user = { favColor: "blue", username: user.data.username };
+      req.session.user = { avatar: user.avatar, username: user.data.username };
       // we have to save the session using the save method in the session object
       // added a callback function that is going to run when it is successfully saves
       // it is going to redirect the user the home page with him logged in already
