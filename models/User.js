@@ -4,6 +4,9 @@ const bcrypt = require("bcryptjs");
 const usersCollection = require("../db").db().collection("users");
 // Requiring the validator package
 const validator = require("validator");
+// Requiring the md5 package for gravatar
+const md5 = require("md5");
+
 const { db } = require("../db");
 // const sanitize = require("sanitize-html");
 const User = function (data) {
