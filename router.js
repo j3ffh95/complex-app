@@ -10,4 +10,7 @@ router.post("/login", userController.login);
 
 router.post("/logout", userController.logout);
 
+// Post Related routes
+router.get("/create-post", postController.viewCreateScreen);
+
 module.exports = router;
