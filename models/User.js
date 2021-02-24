@@ -105,6 +105,7 @@ User.prototype.login = function () {
           attemptedUser &&
           bcrypt.compareSync(this.data.password, attemptedUser.password)
         ) {
+          this.data = attemptedUser;
           this.getAvatar();
           resolve("congrats");
         } else {
