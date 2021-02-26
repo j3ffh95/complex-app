@@ -32,7 +32,7 @@
           <a href="/" class="text-white">OurApp</a>
         </h4>
 
-        <% if(user) {
+        <% if(user) { %>
         <div class="flex-row my-3 my-md-0">
           <a
             href="#"
@@ -64,7 +64,7 @@
             <button class="btn btn-sm btn-secondary">Sign Out</button>
           </form>
         </div>
-        } else {
+        <%} else { %>
         <form action="/login" method="POST" class="mb-0 pt-2 pt-md-0">
           <div class="row align-items-center">
             <div class="col-md mr-0 pr-md-0 mb-3 mb-md-0">
@@ -89,7 +89,7 @@
             </div>
           </div>
         </form>
-        } %>
+        <% } %>
       </div>
     </header>
   </body>
