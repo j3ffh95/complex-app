@@ -3,7 +3,6 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 const app = express();
-const router = require("./router");
 
 // Creating configarations options
 // Adding the store property so we can store our session in mongodb
@@ -18,6 +17,13 @@ let sessionOptions = session({
 app.use(sessionOptions);
 // make our app server use the connect-flash package
 app.use(flash());
+
+app.use(function (req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+});
+
+const router = require("./router");
 
 // Boilerplate code the our app server needs
 // It tells express to add the user submitted data onto our request object
