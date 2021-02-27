@@ -1,5 +1,6 @@
 let Post = function (data) {
   this.data = data;
+  this.errors = [];
 };
 
 Post.prototype.cleanUp = function () {
@@ -18,7 +19,14 @@ Post.prototype.cleanUp = function () {
   };
 };
 
-Post.prototype.validate = function () {};
+Post.prototype.validate = function () {
+  if (this.data.title == "") {
+    this.errors.push("You must provide a title.");
+  }
+  if (this.data.body == "") {
+    this.errors.push("You must provide a post content.");
+  }
+};
 Post.prototype.create = function () {};
 
 module.exports = Post;
