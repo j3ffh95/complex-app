@@ -17,7 +17,11 @@ exports.login = function (req, res) {
     .login()
     .then(function (result) {
       // Create session object
-      req.session.user = { avatar: user.avatar, username: user.data.username };
+      req.session.user = {
+        avatar: user.avatar,
+        username: user.data.username,
+        _id: user.data._id,
+      };
       // we have to save the session using the save method in the session object
       // added a callback function that is going to run when it is successfully saves
       // it is going to redirect the user the home page with him logged in already
@@ -48,7 +52,11 @@ exports.register = function (req, res) {
   user
     .register()
     .then(() => {
-      req.session.user = { username: user.data.username, avatar: user.avatar };
+      req.session.user = {
+        username: user.data.username,
+        avatar: user.avatar,
+        _id: user.data._id,
+      };
       req.session.save(function () {
         res.redirect("/");
       });
