@@ -60,7 +60,7 @@ Post.findSingleById = function (id) {
       reject();
       return;
     }
-    let post = await postCollection.findOne({ _id: new ObjectID(id) });
+    let post = await postsCollection.findOne({ _id: new ObjectID(id) });
     if (post) {
       resolve(post);
     } else {
