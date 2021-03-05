@@ -71,9 +71,18 @@ Post.findSingleById = function (id) {
             as: "authorDocument",
           },
         },
+        {
+          $project: {
+            title: 1,
+            body: 1,
+            createdDate: 1,
+            author: { $arrayElemAt: ["$authorDocument", 0] },
+          },
+        },
       ])
       .toArray();
     if (posts.length) {
+      console.log(posts[0]);
       resolve(posts[0]);
     } else {
       reject();
